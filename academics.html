@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Sunrise Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .academics-hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                        url('https://via.placeholder.com/1920x1080') center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .academics-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .program-section {
+            margin-bottom: 4rem;
+        }
+
+        .program-section h2 {
+            color: var(--primary-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background-color: var(--light-yellow);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .program-card h3 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .program-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .program-card ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-card ul li:before {
+            content: "•";
+            color: var(--primary-orange);
+            position: absolute;
+            left: 0;
+        }
+
+        .facilities {
+            background-color: var(--light-yellow);
+            padding: 4rem 5%;
+            margin: 4rem 0;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .facility-card {
+            text-align: center;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .facility-card i {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sunrise Public School</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="about.html" class="dropbtn">About Us</a>
+                    <div class="dropdown-content">
+                        <a href="mandatory-disclosure.html">Mandatory Public Disclosure</a>
+                        <a href="about-school.html">About School</a>
+                        <a href="principle-message.html">Principle Message</a>
+                    </div>
+                </li>
+                <li><a href="academics.html" class="active">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="academics-hero">
+            <div class="hero-content">
+                <h1>Academic Programs</h1>
+                <p>Excellence in Education</p>
+            </div>
+        </section>
+
+        <section class="academics-content">
+            <div class="program-section">
+                <h2>Primary School (Grades 1-5)</h2>
+                <div class="program-grid">
+                    <div class="program-card">
+                        <h3>Core Subjects</h3>
+                        <ul>
+                            <li>Mathematics</li>
+                            <li>English Language Arts</li>
+                            <li>Science</li>
+                            <li>Social Studies</li>
+                            <li>Physical Education</li>
+                        </ul>
+                    </div>
+                    <div class="program-card">
+                        <h3>Special Programs</h3>
+                        <ul>
+                            <li>Art & Music</li>
+                            <li>Computer Science</li>
+                            <li>Foreign Languages</li>
+                            <li>Character Education</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-section">
+                <h2>Middle School (Grades 6-8)</h2>
+                <div class="program-grid">
+                    <div class="program-card">
+                        <h3>Core Curriculum</h3>
+                        <ul>
+                            <li>Advanced Mathematics</li>
+                            <li>Literature & Composition</li>
+                            <li>Life Sciences</li>
+                            <li>World History</li>
+                            <li>Physical Education</li>
+                        </ul>
+                    </div>
+                    <div class="program-card">
+                        <h3>Elective Courses</h3>
+                        <ul>
+                            <li>Robotics</li>
+                            <li>Digital Arts</li>
+                            <li>Public Speaking</li>
+                            <li>Environmental Science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-section">
+                <h2>High School (Grades 9-12)</h2>
+                <div class="program-grid">
+                    <div class="program-card">
+                        <h3>College Preparatory</h3>
+                        <ul>
+                            <li>Advanced Placement Courses</li>
+                            <li>Honors Programs</li>
+                            <li>College Counseling</li>
+                            <li>SAT/ACT Preparation</li>
+                        </ul>
+                    </div>
+                    <div class="program-card">
+                        <h3>Career Pathways</h3>
+                        <ul>
+                            <li>STEM Focus</li>
+                            <li>Business & Finance</li>
+                            <li>Arts & Humanities</li>
+                            <li>Health Sciences</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="facilities">
+            <h2>Academic Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Science Labs</h3>
+                    <p>State-of-the-art laboratories for hands-on learning</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Computer Labs</h3>
+                    <p>Modern technology centers with high-speed internet</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Library</h3>
+                    <p>Extensive collection of books and digital resources</p>
+                </div>
+                <div class="facility-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Arts Center</h3>
+                    <p>Dedicated spaces for visual and performing arts</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>123 School Street</p>
+                <p>City, State 12345</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@sunrisepublicschool.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sunrise Public School. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

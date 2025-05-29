@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Hero Section */
+        .about-hero {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; /* School image background */
+            height: 40vh; /* Height of the hero section */
+            display: flex;
+            align-items: flex-end; /* Align content to the bottom */
+            justify-content: flex-start; /* Align content to the left */
+            color: var(--white); /* Keep text color white in case any hidden text appears */
+            margin-top: 60px; /* Space below the fixed header */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Slight overlay for potential future text */
+            z-index: 1;
+        }
+
+        .about-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px; /* Limit width for text readability */
+            margin: 0 5%; /* Add horizontal margin/padding */
+            text-align: left; /* Align text left */
+        }
+
+        .about-hero h1 {
+            font-size: 2.8rem; /* Adjusted font size */
+            margin-bottom: 0.5rem; /* Adjusted margin */
+            color: var(--white); /* Ensure heading is white */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add text shadow for readability */
+        }
+
+        .about-hero p {
+            font-size: 1.2rem; /* Adjusted font size */
+            color: var(--white); /* Ensure paragraph is white */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Add text shadow for readability */
+        }
+
+        /* Main Content Area */
+        .about-main-content {
+            padding: 4rem 5%;
+            display: flex;
+            flex-direction: column; /* Stack sections vertically */
+            gap: 4rem; /* Space between main sections */
+        }
+
+        /* General Content Section Styling */
+        .about-section {
+            text-align: center; /* Center align content in general sections */
+            border-bottom: 2px solid var(--secondary-yellow); /* Add yellow dividing line */
+            padding-bottom: 3rem; /* Add padding below the content and above the line */
+        }
+
+        .about-section:last-child {
+             border-bottom: none; /* Remove border from the last section */
+             padding-bottom: 0; /* Remove padding from the last section */
+        }
+
+        .welcome-section {
+            text-align: left; /* Align text left for the welcome section */
+            background-color: #f9f9f9; /* Add a subtle light grey background */
+            padding: 3rem 5%;
+            width: 100%; /* Ensure it takes full width */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .welcome-section .section-content-enhanced {
+            display: flex; /* Use flexbox for side-by-side layout */
+            flex-direction: row; /* Display side-by-side on larger screens */
+            gap: 2rem; /* Space between image and text */
+            align-items: center; /* Center items vertically when stacked */
+            max-width: 1200px; /* Limit overall content width */
+            margin: 0 auto; /* Center the content */
+            padding: 1rem 0; /* Add some vertical padding within the enhanced content */
+        }
+
+        .welcome-section .image-area {
+            flex: 1; /* Make image area take equal width */
+            min-width: 300px; /* Minimum width for image area */
+            text-align: center; /* Center image if it's smaller than container */
+        }
+
+        .welcome-section .image-area img {
+             max-width: 100%; /* Ensure image is responsive */
+             height: auto;
+             border-radius: 8px; /* Optional: add rounded corners to image */
+             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add shadow to image */
+        }
+
+        .welcome-section .text-content {
+            flex: 1; /* Make text content take equal width */
+            /* No max-width here, it's controlled by the flex container */
+        }
+
+        .welcome-section p {
+            margin: 0 0 1rem 0; /* Adjust paragraph margin */
+            text-align: left; /* Ensure paragraphs are left aligned */
+            line-height: 1.7; /* Ensure consistent line height */
+        }
+
+        .about-section h2 {
+            color: var(--primary-orange);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-orange);
+        }
+
+        .about-section p {
+            color: #555;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto 1.5rem auto; /* Center paragraph and add space below */
+        }
+
+        /* Specific Section Layouts */
+        .mission-vision-section .section-content,
+        .philosophy-values-section .section-content,
+        .campus-section .section-content,
+        .student-life-section .section-content {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 2rem;
+             text-align: left;
+             max-width: 1200px; /* Limit width of grid content for readability */
+             margin: 0 auto; /* Center the grid content */
+        }
+
+        .mv-card,
+        .pv-card,
+        .about-card, .mv-card {
+             background-color: var(--light-yellow);
+             padding: 2rem;
+             padding-top: 0; /* Remove top padding for image to be flush */
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .mv-card h3,
+        .pv-card h3,
+        .about-card h3, .mv-card h3 {
+             color: var(--primary-orange);
+             margin-top: 1rem; /* Add space above heading after image */
+             margin-bottom: 1rem; /* Space below heading */
+             display: flex;
+             align-items: center;
+             gap: 0.8rem;
+        }
+
+        .mv-card i,
+        .pv-card i,
+        .about-card i, .mv-card i {
+             font-size: 1.8rem;
+             color: #555;
+        }
+
+         .mv-card p, .pv-card p, .about-card p {
+             color: #555;
+             line-height: 1.6; /* Slightly reduced line height for card paragraphs */
+             margin: 0;
+         }
+
+        /* School Journey Timeline */
+        .school-journey-section {
+            position: relative;
+            padding: 2rem 0;
+            text-align: left; /* Align text left within timeline items */
+        }
+
+        .school-journey-section h2 {
+             text-align: center; /* Center timeline heading */
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-orange); /* Timeline line color */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--primary-orange); /* Node color */
+            border: 4px solid var(--light-yellow); /* Node border */
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left .timeline-item::after {
+             left: -16px;
+        }
+
+        .timeline-item .content {
+            padding: 20px 30px;
+            background-color: var(--white); /* Content box background */
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+         .timeline-item .content h3 {
+             color: var(--primary-orange);
+             margin-bottom: 0.5rem;
+         }
+
+         .timeline-item .content p {
+             color: #666;
+             line-height: 1.6; /* Consistent line height for timeline content */
+             margin: 0;
+         }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left .content::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: -15px;
+            border: medium solid var(--white);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--white);
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right .content::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: -15px;
+            border: medium solid var(--white);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--white) transparent transparent;
+        }
+
+         /* Fix the position of the year text */
+         .timeline-item .year {
+             position: absolute;
+             top: 25px;
+             font-weight: bold;
+             color: var(--primary-orange);
+             font-size: 1.1rem;
+         }
+
+         .left .year {
+             right: -130px; /* Position year to the right of left items */
+         }
+
+         .right .year {
+             left: -130px; /* Position year to the left of right items */
+         }
+
+
+        /* Responsive timeline */
+        @media (max-width: 768px) {
+             .timeline::after {
+                 left: 31px;
+             }
+
+             .timeline-item {
+                 width: 100%;
+                 padding-left: 70px;
+                 padding-right: 25px;
+             }
+
+             .timeline-item::after {
+                 left: 15px;
+             }
+
+             .left .content::before,
+             .right .content::before {
+                 border: medium solid var(--white);
+                 border-width: 10px 10px 10px 0;
+                 border-color: transparent var(--white) transparent transparent;
+                 left: 35px;
+                 right: auto;
+             }
+
+             .left .year,
+             .right .year {
+                 left: 0;
+                 top: 0;
+                 transform: none;
+                 margin-bottom: 10px;
+                 position: relative;
+                 text-align: left;
+             }
+        }
+
+
+
+        /* Responsive adjustments for overall layout */
+        @media (max-width: 768px) {
+            .about-hero {
+                 height: 30vh;
+                 align-items: flex-end; /* Align content to bottom on mobile */
+                 justify-content: flex-start; /* Align content to left on mobile */
+                 padding: 0 5% 1.5rem; /* Add bottom padding on mobile */
+            }
+
+            .about-hero h1 {
+                 font-size: 2rem;
+             }
+
+            .about-hero p {
+                 font-size: 0.9rem;
+             }
+
+            .about-main-content {
+                 padding: 3rem 5%;
+                 gap: 3rem;
+            }
+
+             .about-section h2 {
+                 font-size: 1.8rem;
+             }
+
+             .mission-vision-section .section-content,
+             .philosophy-values-section .section-content,
+             .campus-section .section-content,
+             .student-life-section .section-content, .mission-vision-section .section-content, .about-section .section-content {
+                  gap: 1.5rem;
+             }
+
+             .mv-card,
+             .pv-card,
+             .about-card, .mv-card, .about-section .about-card {
+                  padding: 1.5rem;
+                  padding-top: 0; /* Remove top padding for image to be flush */
+             }
+
+             .mv-card h3,
+             .pv-card h3,
+             .about-card h3, .mv-card h3, .about-section .about-card h3 {
+                  font-size: 1.2rem;
+                  margin-top: 0.8rem; /* Add space above heading after image */
+                  margin-bottom: 0.8rem; /* Adjust margin */
+             }
+
+              .mv-card h3 i,
+              .pv-card h3 i,
+              .about-card h3 i, .mv-card h3 i, .about-section .about-card i {
+                 font-size: 1.5rem;
+             }
+
+             .welcome-section {
+                 padding: 2rem 5%;
+                 margin: 0;
+             }
+
+             .welcome-section h2 {
+                  text-align: center; /* Keep heading centered on mobile */
+             }
+
+              .welcome-section p {
+                   text-align: left; /* Keep paragraphs left aligned on mobile */
+              }
+
+             .welcome-section .section-content-enhanced {
+                  flex-direction: column; /* Stack on mobile */
+                  gap: 1.5rem; /* Adjust gap on mobile */
+                  padding: 0; /* Remove vertical padding on mobile */
+             }
+        }
+
+        /* New styles for Achievements grid and cards */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min width as needed */
+            gap: 2rem; /* Space between cards */
+            max-width: 1200px; /* Align with other main content */
+            margin: 2rem auto; /* Center the grid and add margin */
+            padding: 0 5%; /* Add horizontal padding */
+        }
+
+        .achievement-card {
+            background-color: var(--white); /* White background */
+            padding: 2rem; /* Padding inside the card */
+            padding-top: 0; /* Remove top padding to make image flush */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+            text-align: center; /* Center content within the card */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+        }
+
+        .achievement-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem; /* Add margin above icon */
+            width: 60px; /* Icon container size */
+            height: 60px;
+            background-color: var(--primary-orange); /* Orange background for icon */
+            color: var(--white); /* White icon color */
+            font-size: 2rem; /* Icon size */
+            border-radius: 50%; /* Circular icon container */
+            margin: 0 auto 1rem auto; /* Center icon and add bottom margin */
+        }
+
+        .achievement-card h3 {
+            color: var(--primary-orange); /* Orange heading color */
+            font-size: 1.4rem; /* Heading size */
+            margin-bottom: 1rem; /* Space below heading */
+        }
+
+        .achievement-card p {
+            color: #555; /* Paragraph text color */
+            line-height: 1.6; /* Improve readability */
+            margin: 0; /* Remove default paragraph margin */
+            text-align: center; /* Center paragraph text */
+        }
+
+        .achievement-card img {
+             width: calc(100% + 4rem); /* Make image span full width including padding */
+             max-width: calc(100% + 4rem);
+             height: 150px; /* Fixed height for images */
+             object-fit: cover; /* Cover the area without stretching */
+             margin: -2rem -2rem 1rem -2rem; /* Negative margin to pull image to edges */
+             border-top-left-radius: 8px;
+             border-top-right-radius: 8px;
+        }
+
+        /* Responsive adjustments for Achievements grid */
+        @media (max-width: 768px) {
+             .achievements-grid {
+                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust min width for smaller screens */
+                 gap: 1.5rem; /* Adjust gap on smaller screens */
+                 margin: 1.5rem auto; /* Adjust margin on smaller screens */
+                 padding: 0 3%; /* Adjust padding on smaller screens */
+             }
+
+             .achievement-card {
+                  padding: 1.5rem; /* Adjust padding on smaller screens */
+             }
+
+             .achievement-icon {
+                  width: 50px; /* Adjust icon container size */
+                  height: 50px;
+                  font-size: 1.8rem; /* Adjust icon size */
+                  margin-bottom: 0.8rem; /* Adjust margin */
+                  margin-top: 1rem; /* Adjust margin above icon on mobile */
+             }
+
+             .achievement-card h3 {
+                  font-size: 1.2rem; /* Adjust heading size */
+                  margin-bottom: 0.8rem; /* Adjust margin */
+             }
+
+             .achievement-card img {
+                  width: calc(100% + 3rem); /* Adjust for mobile padding */
+                  max-width: calc(100% + 3rem);
+                  margin: -1.5rem -1.5rem 1rem -1.5rem; /* Adjust for mobile padding */
+                  height: 120px; /* Adjust height on mobile */
+             }
+        }
+
+    </style>
+    <style>
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Base styles for animated elements */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px); /* Start slightly below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+            /* Add a small delay based on element position if needed, but start simple */
+        }
+
+        /* Styles when the element is visible */
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Optional: Fade in for elements that don't need to slide */
+        .fade-in-on-scroll {
+             opacity: 0;
+             transition: opacity 0.6s ease-out;
+        }
+
+        .fade-in-on-scroll.is-visible {
+             opacity: 1;
+        }
+
+    </style>
+    <style>
+         /* Styles for images within mv-cards */
+         .mv-card img {
+              width: calc(100% + 4rem); /* Make image span full width including padding */
+              max-width: calc(100% + 4rem);
+              height: 180px; /* Set a fixed height for consistency */
+              object-fit: cover; /* Cover the area without stretching */
+              margin: -2rem -2rem 1rem -2rem; /* Negative margin to pull image to edges */
+              border-top-left-radius: 8px;
+              border-top-right-radius: 8px;
+         }
+
+         /* Responsive adjustments for mv-card images */
+         @media (max-width: 768px) {
+              .mv-card img {
+                  width: calc(100% + 3rem); /* Adjust for mobile padding */
+                  max-width: calc(100% + 3rem);
+                  margin: -1.5rem -1.5rem 0.8rem -1.5rem; /* Adjust for mobile padding and space below */
+                  height: 150px; /* Adjust height on mobile */
+              }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><h1>Sunrise Public School</h1></a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="about-school.html" class="dropbtn active">About Us</a>
+                    <div class="dropdown-content">
+                        <a href="mandatory-disclosure.html">Mandatory Public Disclosure</a>
+                        <a href="about-school.html" class="active">About School</a>
+                        <a href="principle-message.html">Principle Message</a>
+                    </div>
+                </li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="hero-content">
+            </div>
+        </section>
+
+        <section class="about-main-content">
+            <div class="about-section welcome-section">
+                <h2 class="animate-on-scroll"><i class="fas fa-handshake"></i> Welcome to Sunrise Public School</h2>
+                <div class="section-content-enhanced">
+                    <div class="image-area">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Welcome to Sunrise Public School">
+                    </div>
+                    <div class="text-content">
+                        <p>Sunrise Public School is a leading educational institution dedicated to fostering intellectual curiosity, personal growth, and social responsibility in students from diverse backgrounds. Established with a vision to provide holistic education, we empower our students to become lifelong learners and contributing members of society. Our experienced faculty, innovative curriculum, and supportive learning environment ensure that every student receives the guidance and resources they need to excel academically and develop their unique talents. We believe in nurturing not just academic prowess but also critical thinking, creativity, and strong ethical values.</p>
+                        <p>At Sunrise Public School, we strive to create a vibrant community where students feel safe, respected, and challenged. We offer a wide range of extracurricular activities, sports, and clubs that allow students to explore their interests and develop new skills. Our commitment to excellence is reflected in our state-of-the-art facilities, including modern classrooms, well-equipped laboratories, a comprehensive library, and extensive sports facilities. We are constantly evolving to meet the needs of the 21st century learner, integrating technology and innovative teaching methodologies to make learning engaging and effective.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section mission-vision-section">
+                 <h2 class="animate-on-scroll"><i class="fas fa-book-open"></i> Our Philosophy and Values</h2>
+                 <div class="section-content">
+                      <div class="mv-card animate-on-scroll">
+                          <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                          <p>To provide a nurturing and stimulating educational environment that inspires students to achieve their full academic, creative, and personal potential. We are committed to fostering critical thinking, problem-solving skills, and a passion for lifelong learning, preparing students to confidently navigate and contribute positively to a rapidly changing world.</p>
+                      </div>
+                      <div class="mv-card animate-on-scroll">
+                          <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                          <p>To be recognized as a premier educational institution known for our commitment to excellence, innovation, and the holistic development of students. We aspire to cultivate a community of compassionate, responsible, and globally-minded individuals who are equipped with the knowledge, skills, and values to lead fulfilling lives and make a significant impact on society.</p>
+                      </div>
+                       <div class="mv-card animate-on-scroll">
+                          <h3><i class="fas fa-seedling"></i> Our Values</h3>
+                          <p>Our core values of **Integrity, Respect, Excellence, Collaboration, and Compassion** are the foundation of our school culture. We uphold honesty and ethical behavior, promote mutual respect and understanding, strive for excellence in all endeavors, encourage teamwork and community spirit, and foster empathy and kindness towards others.</p>
+                      </div>
+                 </div>
+            </div>
+
+            <div class="about-section school-journey-section">
+                 <h2 class="animate-on-scroll"><i class="fas fa-route"></i> Our Journey</h2>
+                 <div class="timeline">
+                     <div class="timeline-item left animate-on-scroll">
+                         <div class="year">1990</div>
+                         <div class="content">
+                             <h3>Foundation and Early Years</h3>
+                             <p>Sunrise Public School was established with a foundational commitment to providing accessible and quality education. The initial focus was on building a strong academic program and establishing a nurturing environment for students.</p>
+                         </div>
+                     </div>
+
+                      <div class="timeline-item right animate-on-scroll">
+                         <div class="year">1995-2004</div>
+                         <div class="content">
+                             <h3>Growth and Expansion</h3>
+                             <p>During this period, the school experienced significant growth in student enrollment and infrastructure. New blocks were constructed to accommodate more classrooms, and dedicated science and computer labs were established to enhance learning resources.</p>
+                         </div>
+                     </div>
+
+                     <div class="timeline-item left animate-on-scroll">
+                         <div class="year">2005</div>
+                         <div class="content">
+                             <h3>CBSE Affiliation</h3>
+                             <p>A major milestone was achieved with the affiliation to the Central Board of Secondary Education (CBSE). This allowed the school to offer a nationally recognized curriculum and opened new avenues for student assessment and progression.</p>
+                         </div>
+                     </div>
+
+                      <div class="timeline-item right animate-on-scroll">
+                         <div class="year">2006-2014</div>
+                         <div class="content">
+                             <h3>Academic and Extracurricular Development</h3>
+                             <p>The school focused on enriching both academic and extracurricular programs. Introduction of various clubs, sports teams, and cultural events became a regular part of the school calendar, promoting holistic development.</p>
+                         </div>
+                     </div>
+
+                     <div class="timeline-item left animate-on-scroll">
+                         <div class="year">2015-2019</div>
+                         <div class="content">
+                             <h3>Technological Integration and Modernization</h3>
+                             <p>Embracing technological advancements, smart classrooms were implemented across sections. The computer lab was upgraded, and digital resources were integrated into the teaching methodologies to enhance interactive learning.</p>
+                         </div>
+                     </div>
+
+                      <div class="timeline-item right animate-on-scroll">
+                         <div class="year">2020-2023</div>
+                         <div class="content">
+                             <h3>Focus on Excellence and Innovation</h3>
+                             <p>The school achieved consistent high pass rates in board examinations, reflecting the dedication of both students and faculty. New pedagogical approaches were explored, and professional development for teachers was emphasized.</p>
+                         </div>
+                     </div>
+
+                      <div class="timeline-item left animate-on-scroll">
+                         <div class="year">2024</div>
+                         <div class="content">
+                             <h3>Present Day and Future Outlook</h3>
+                             <p>Today, Sunrise Public School stands as a reputable institution, continually adapting to the evolving educational landscape. We are committed to innovation, student well-being, and preparing our students to be successful global citizens.</p>
+                         </div>
+                     </div>
+
+                     <!-- Add more timeline items as needed -->
+                 </div>
+            </div>
+
+             <div class="about-section achievements-section">
+                <h2 class="animate-on-scroll"><i class="fas fa-trophy"></i> Our Achievements</h2>
+                <p>Sunrise Public School takes immense pride in the accomplishments of its students and faculty. Our commitment to excellence has resulted in recognition across various domains:</p>
+                <div class="achievements-grid">
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-award"></i></div>
+                       <h3>Academic Excellence</h3>
+                       <p>Our students consistently achieve top ranks in the CBSE board examinations and perform exceptionally well in national and international academic competitions like Olympiads and quizzes.</p>
+                   </div>
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                       <h3>Sports Recognition</h3>
+                       <p>Our athletes have brought laurels to the school by excelling in various sports at district, state, and national levels. We encourage participation in a wide range of sports activities.</p>
+                   </div>
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-palette"></i></div>
+                       <h3>Cultural Triumphs</h3>
+                       <p>We have a vibrant cultural scene, with students winning numerous accolades in inter-school arts, music, dance, and theater competitions, showcasing their creative talents.</p>
+                   </div>
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-users"></i></div>
+                       <h3>Community Impact</h3>
+                       <p>Our students and staff are actively involved in community service initiatives and awareness campaigns, demonstrating their commitment to social responsibility and making a positive impact.</p>
+                   </div>
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-laptop-code"></i></div>
+                       <h3>STEM and Innovation</h3>
+                       <p>Students participate and win in various science exhibitions, coding challenges, and technology-related competitions, highlighting our focus on STEM education and innovation.</p>
+                   </div>
+                    <div class="achievement-card animate-on-scroll">
+                       <div class="achievement-icon"><i class="fas fa-globe"></i></div>
+                       <h3>Global Participation</h3>
+                       <p>We encourage participation in international exchange programs and online collaborations, exposing students to global perspectives and fostering cross-cultural understanding.</p>
+                   </div>
+                </div>
+             </div>
+
+              <div class="about-section campus-section">
+                <h2 class="animate-on-scroll"><i class="fas fa-building"></i> Campus & Facilities</h2>
+                <p>Our school provides a conducive environment for learning and growth with modern facilities designed to support comprehensive development:</p>
+                <div class="section-content">
+                     <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-chalkboard-teacher"></i> Classrooms</h3>
+                         <p>Spacious, well-lit, and ventilated classrooms equipped with ergonomic furniture and smart boards for interactive and engaging lessons.</p>
+                     </div>
+                     <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-flask"></i> Laboratories</h3>
+                          <p>State-of-the-art laboratories for Physics, Chemistry, Biology, and Computer Science, equipped with the latest apparatus for practical learning and experimentation.</p>
+                     </div>
+                     <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-book"></i> Library</h3>
+                          <p>A vast and resourceful library with an extensive collection of books, magazines, journals, and digital resources catering to diverse interests and academic needs.</p>
+                     </div>
+                     <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-running"></i> Sports Complex</h3>
+                          <p>Comprehensive sports facilities including a playground for football and cricket, courts for basketball and tennis, and indoor spaces for badminton and table tennis, promoting physical fitness and sportsmanship.</p>
+                     </div>
+                     <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-utensils"></i> Cafeteria</h3>
+                          <p>A hygienic and spacious cafeteria offering a variety of nutritious and delicious meals and snacks, ensuring student well-being.</p>
+                     </div>
+                     <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-bus"></i> Transportation</h3>
+                          <p>A fleet of well-maintained buses with trained staff provides safe and reliable transportation for students across various routes.</p>
+                     </div>
+                      <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-music"></i> Arts & Music Studios</h3>
+                          <p>Dedicated studios for music, dance, and visual arts, providing students with opportunities to explore and hone their creative talents.</p>
+                     </div>
+                      <div class="about-card animate-on-scroll">
+                          <h3><i class="fas fa-heartbeat"></i> Health & Wellness Center</h3>
+                          <p>A fully equipped health center with a qualified nurse to attend to the immediate medical needs of students and staff.</p>
+                     </div>
+                </div>
+              </div>
+
+               <div class="about-section student-life-section">
+                 <h2 class="animate-on-scroll"><i class="fas fa-graduation-cap"></i> Student Life</h2>
+                 <p>Life at Sunrise Public School is a vibrant tapestry of academic pursuits, extracurricular activities, and personal growth opportunities. We encourage students to engage in a variety of activities to develop their skills and interests beyond the classroom.</p>
+                 <div class="section-content">
+                     <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-users"></i> Clubs and Societies</h3>
+                         <p>Students can join various clubs such as science, debate, eco, and photography clubs, fostering teamwork and specialized interests.</p>
+                     </div>
+                      <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-calendar-alt"></i> Events and Celebrations</h3>
+                            <p>The school calendar is packed with annual events, cultural programs, and festivals, providing platforms for students to showcase their talents and celebrate diversity.</p>
+                       </div>
+                      <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-campground"></i> Excursions and Camps</h3>
+                            <p>Educational excursions and camps are organized to provide students with practical learning experiences and opportunities for adventure and bonding.</p>
+                       </div>
+                      <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-handshake"></i> Leadership Opportunities</h3>
+                           <p>Students can take on leadership roles through the student council and various school events, developing responsibility and leadership skills.</p>
+                       </div>
+                      <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-volleyball-ball"></i> Inter-House Competitions</h3>
+                           <p>A strong house system promotes healthy competition and camaraderie through various academic, sports, and cultural events.</p>
+                       </div>
+                      <div class="about-card animate-on-scroll">
+                         <h3><i class="fas fa-tree"></i> Community Service</h3>
+                           <p>We instill a sense of social responsibility through mandatory community service programs and participation in social awareness campaigns.</p>
+                       </div>
+                 </div>
+             </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 School Street</p>
+                <p>City, State 12345</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@sunrisepublicschool.edu</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about-school.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sunrise Public School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll, .fade-in-on-scroll');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px 0px -50px 0px' // Adjust when animation triggers (e.g., 50px before bottom of viewport)
+            });
+
+            elementsToAnimate.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html> 
